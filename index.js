@@ -55,7 +55,7 @@ async function main(currentBookedDate) {
               booker.book(sessionHeaders, date, time)
                 .then(res => helper.log(res))
                 .then(d => helper.log(`Booked time at ${date} ${time}`))
-                .then(d => sendMail(transporter, "Booked a New Appointment Date", `${date}:${time}`))
+                .then(d => email.sendMail(transporter, "Booked a New Appointment Date", `${date}:${time}`))
               
               // We should ideally update the latestBookedDate at this point.
               // However, the booking request returns "success" even if it
