@@ -31,7 +31,7 @@ export async function extractHeaders(res) {
 }
   
 export function extractRelevantCookies(res) {
-    const parsedCookies = parseCookies(res.headers.get('set-cookie'))
+    const parsedCookies = parseCookies(res.headers.get('Set-Cookie'))
     return `_yatri_session=${parsedCookies['_yatri_session']}`
 }
   

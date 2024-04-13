@@ -7,7 +7,11 @@ const BASE_URI = 'https://ais.usvisa-info.com/en-tr/niv'
 export async function login() {
     helper.log(`Logging in`)
   
-    const anonymousHeaders = await fetch(`${BASE_URI}/users/sign_in`)
+    const anonymousHeaders = await fetch(`${BASE_URI}/users/sign_in`, {
+      headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+      }
+    })
       .then(response => helper.extractHeaders(response))
   
     return fetch(`${BASE_URI}/users/sign_in`, {
