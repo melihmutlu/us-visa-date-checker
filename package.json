@@ -11,6 +11,7 @@
     "nodemailer": "^6.9.9"
   },
   "scripts": {
-    "start": "node ./index.js true"
+    "start": "node ./index.js true",
+    "debug": "node ./index.js false"
   }
 }
