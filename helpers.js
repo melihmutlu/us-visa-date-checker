@@ -1,4 +1,5 @@
 import cheerio from "cheerio";
+import fs from "fs";
 
 const BASE_URI = 'https://ais.usvisa-info.com/en-tr/niv'
 
@@ -52,6 +53,9 @@ export function sleep(s) {
     });
 }
   
-export function log(message) {
+export function log(message, flush=false) {
     console.log(`[${new Date().toISOString()}]`, message)
+
+    if(flush)
+      fs.appendFileSync('events.txt', `[${new Date().toISOString()}] ${message}\n`)
 }

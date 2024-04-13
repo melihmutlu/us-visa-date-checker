@@ -34,7 +34,7 @@ async function main(currentBookedDate) {
       } else if (date > currentBookedDate) {
         helper.log(`Closest available date is further than the already booked date (${currentBookedDate} vs ${date})`)
       } else {
-        helper.log(`Closer date found: ${date}`)
+        helper.log(`Closer date found: ${date}`, true)
         
         if(date < latestBookedDate){
           // Recheck to avoid notifying unnecessarily
@@ -43,7 +43,7 @@ async function main(currentBookedDate) {
           // bot often cannot book the date even if it consider the date as
           // available. To reduce the notification noise, double-chech the date.
           var recheck = await booker.checkAvailableDate(sessionHeaders)
-          helper.log(`Rechecked the closest date and found: ${recheck}`)
+          helper.log(`Rechecked the closest date and found: ${recheck}`, true)
           if(recheck <= date){
               
               if (isNotifEnabled)
@@ -54,7 +54,7 @@ async function main(currentBookedDate) {
               const time = await booker.checkAvailableTime(sessionHeaders, date)
               booker.book(sessionHeaders, date, time)
                 .then(res => helper.log(res))
-                .then(d => helper.log(`Booked time at ${date} ${time}`))
+                .then(d => helper.log(`Booked time at ${date} ${time}`), true)
                 .then(d => email.sendMail(transporter, "Booked a New Appointment Date", `${date}:${time}`))
               
               // We should ideally update the latestBookedDate at this point.
