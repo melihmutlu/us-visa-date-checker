@@ -7,7 +7,7 @@ Bot to periodically check available dates for USA visa appointment.
 
 - Run ``npm install`` to install dependencies
 - If you want to disable email notifications, update "start" script in *package.json* as follows: \
-  ``node ./index.js true``
+  ``node ./index.js false``
 - Create *.env* file under the root directory to configure the bot: 
 
   An example *.env* would look like:˜
